@@ -1,49 +1,74 @@
-name:                haskell-api-example
-version:             0.1.0.0
-synopsis:            An example on how to implement a simple REST API in Haskell.
--- description:
-homepage:            https://github.com/Kitanotori/haskell-api-example#README
-license:             Apache
-license-file:        LICENSE
-author:              Petri Kivikangas
-maintainer:          petri.kivikangas@protonmail.com
-copyright:           2019 Petri Kivikangas
-category:            Web
-build-type:          Simple
-extra-source-files:  README.md
-cabal-version:       >=1.10
+cabal-version: 1.12
 
-library
-  hs-source-dirs:      src
-  exposed-modules:     Server
-  build-depends:       base >= 4.7 && < 5
-                     , aeson
-                     , servant-server
-                     , wai
-                     , warp
-  default-language:    Haskell2010
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 9642e5e1ae0c6b86091c3204efa8dee5441347c7d0a03857efe5e0657dbeb164
 
-executable haskell-api-example-exe
-  hs-source-dirs:      app
-  main-is:             Main.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , haskell-api-example
-  default-language:    Haskell2010
-
-test-suite haskell-api-example-test
-  type:                exitcode-stdio-1.0
-  hs-source-dirs:      test
-  main-is:             Spec.hs
-  build-depends:       base
-                     , haskell-api-example
-                     , hspec
-                     , hspec-wai
-                     , hspec-wai-json
-                     , aeson
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  default-language:    Haskell2010
+name:           haskell-api-example
+version:        0.1.0.0
+synopsis:       An example on how to implement a simple REST API in Haskell.
+description:    Please see the README on GitHub at <https://github.com/Kitanotori/haskell-api-example#README>
+category:       Web
+homepage:       https://github.com/Kitanotori/haskell-api-example#README
+bug-reports:    https://github.com/Kitanotori/haskell-api-example/issues
+author:         Petri Kivikangas
+maintainer:     petri.kivikangas@protonmail.com
+copyright:      2019 Petri Kivikangas
+license:        Apache
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
 
 source-repository head
-  type:     git
+  type: git
   location: https://github.com/Kitanotori/haskell-api-example
+
+library
+  exposed-modules:
+      Server
+  other-modules:
+      Paths_haskell_api_example
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , servant-server
+    , wai
+    , warp
+  default-language: Haskell2010
+
+executable haskell-api-example-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_haskell_api_example
+  hs-source-dirs:
+      app
+  ghc-options: -Weverything -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , haskell-api-example
+  default-language: Haskell2010
+
+test-suite haskell-api-example-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      ServerSpec
+      Paths_haskell_api_example
+  hs-source-dirs:
+      test
+  ghc-options: -Weverything -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , haskell-api-example
+    , hlint
+    , hspec
+    , hspec-discover
+    , hspec-wai
+    , hspec-wai-json
+  default-language: Haskell2010
